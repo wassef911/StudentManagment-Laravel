@@ -50,7 +50,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Grade</label>
-                                <select class="form-select">
+                                <select name="grade" class="form-select">
                                     <option value="pr" selected>PR</option>
                                     <option value="mcf">MCF</option>
                                     <option value="contractuel">Contractuel</option>

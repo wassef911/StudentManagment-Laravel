@@ -43,6 +43,12 @@ class EtudiantController extends Controller
     $etudiant->prenom = $request->input('prenom');
     $etudiant->age = $request->input('age');
     $etudiant->diplome = $request->input('diplome');
+    $etudiant->mail = $request->input('mail');
+    $etudiant->group = $request->input('group');
+    $etudiant->mdp = $request->input('mdp');
+    $etudiant->login = $request->input('login');
+    $etudiant->tel = $request->input('tel');
+
     $etudiant->save();
     return redirect('/');
   }

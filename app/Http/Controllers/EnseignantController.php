@@ -41,6 +41,10 @@ class EnseignantController extends Controller
     $enseignant->cin = $request->input('cin');
     $enseignant->nom = $request->input('nom');
     $enseignant->prenom = $request->input('prenom');
+    $enseignant->tel = $request->input('tel');
+    $enseignant->mail = $request->input('mail');
+    $enseignant->numbur = $request->input('numbur');
+    $enseignant->grade = $request->input('grade');
     $enseignant->save();
     return redirect('/');
   }

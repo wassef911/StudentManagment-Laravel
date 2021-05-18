@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Mail</label>
-                                <input name="Mail" type="text" class="form-control"  placeholder="Diplome Etudiant">
+                                <input name="mail" type="text" class="form-control"  placeholder="Diplome Etudiant">
                             </div>
                             <div class="form-group">
                                 <label>Login</label>
