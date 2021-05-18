@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Enseignant;
 use App\Etudiant;
 use App\Diplome;
+use App\Cour;
+
 
 class AdminController extends Controller
 {
@@ -19,9 +21,10 @@ class AdminController extends Controller
     public function index()
     {
         $etudiants = Etudiant::all();
+        $cours = Cour::all();
         $enseignants = Enseignant::all();
         $diplomes = Diplome::all();
-        return view('admin', ['etudiants' => $etudiants, 'enseignants' => $enseignants, 'diplomes' => $diplomes]);
+        return view('admin', ['etudiants' => $etudiants,'cours' => $cours, 'enseignants' => $enseignants, 'diplomes' => $diplomes]);
     }
 
     /**
@@ -33,6 +36,7 @@ class AdminController extends Controller
         $nbDip = DB::table('etudiants')->select("diplomes.nom", DB::raw("COUNT(etudiants.id) as nombreEtudients"))->join("diplomes", "diplomes.nom", "=", "etudiants.diplome")->groupBy("diplomes.nom")->get();
         return view('stats.index', ["nbDip" => $nbDip]);
     }
+
 
     /**
      * Store a newly created resource in storage.
