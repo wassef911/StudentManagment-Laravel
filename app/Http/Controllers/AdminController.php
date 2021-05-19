@@ -24,7 +24,7 @@ class AdminController extends Controller
         $cours = Cour::all();
         $enseignants = Enseignant::all();
         $diplomes = Diplome::all();
-        return view('admin', ['etudiants' => $etudiants,'cours' => $cours, 'enseignants' => $enseignants, 'diplomes' => $diplomes]);
+        return view('admin', compact("cours","etudiants","enseignants","diplomes"));
     }
 
     /**
@@ -34,7 +34,7 @@ class AdminController extends Controller
     {
         // $sql = 'SELECT COUNT(E.id),D.nom FROM etudiants E, diplomes D WHERE E.diplome = D.nom GROUP BY D.nom';
         $nbDip = DB::table('etudiants')->select("diplomes.nom", DB::raw("COUNT(etudiants.id) as nombreEtudients"))->join("diplomes", "diplomes.nom", "=", "etudiants.diplome")->groupBy("diplomes.nom")->get();
-        return view('stats.index', ["nbDip" => $nbDip]);
+        return view('stats.index',compact("nbDip"));
     }
 
 
