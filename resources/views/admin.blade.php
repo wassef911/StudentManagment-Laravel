@@ -14,7 +14,7 @@
 <body class="bg-dark text-primary">
     @include("navbar")
     @include("login")
-    @include("operation")
+    @include("status")
     <div class="container-fluid mt-4">
         <div class="container-fluid mt-4">
             <div class="row justify-content-center">

@@ -9,9 +9,6 @@ use Illuminate\Http\Request;
 
 class CourController extends Controller
 {
-
-    private $operation = '';
-    private $entity = 'cour';
     /**
      * Show the form for creating a new resource.
      *
@@ -44,7 +41,7 @@ class CourController extends Controller
         $this->operation = 'create';
 
         $cour->save();
-        return redirect('/');
+        return redirect('/')->with('status',  'Un cours a été créée avec succès.');
     }
 
     /**
@@ -95,8 +92,8 @@ class CourController extends Controller
         $cour->enseignant = $request->input('enseignant');
         $cour->diplome = $request->input('diplome');
         $cour->save();
-        $this->operation = 'update';
-        return redirect('/');
+
+    return redirect('/')->with('status',  'Mis à jour cours avec succès.');
     }
 
     /**
@@ -110,6 +107,6 @@ class CourController extends Controller
         $cour = Cour::find($id);
         $cour->delete();
         $this->operation = 'delete';
-        return redirect('/');
+        return redirect('/')->with('status', 'Un cours a été supprimé avec succès.');
     }
 }

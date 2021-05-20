@@ -32,7 +32,7 @@ class DiplomeController extends Controller
         $diplome->nom = $request->input('nom');
         $diplome->description = $request->input('description');
         $diplome->save();
-        return redirect('/');
+        return redirect('/')->with('status',  'Une diplome a été créée avec succès.');
     }
 
     /**
@@ -76,7 +76,7 @@ class DiplomeController extends Controller
         $diplome->nom = $request->input('nom');
         $diplome->description = $request->input('description');
         $diplome->save();
-        return redirect('/');
+        return redirect('/')->with('status', 'Mis à jour diplomes avec succès.');
     }
 
     /**
@@ -89,6 +89,6 @@ class DiplomeController extends Controller
     {
         $diplome = Diplome::find($id);
         $diplome->delete();
-        return redirect('/');
+        return redirect('/')->with('status', 'Une diplome a été supprimé avec succès.');
     }
 }

@@ -37,7 +37,7 @@ class EnseignantController extends Controller
     $enseignant->numbur = $request->input('numbur');
     $enseignant->grade = $request->input('grade');
     $enseignant->save();
-    return redirect('/');
+    return redirect('/')->with('status',  'Un enseignant a été créée avec succès.');
   }
 
   /**
@@ -82,7 +82,7 @@ class EnseignantController extends Controller
     $enseignant->nom = $request->input('nom');
     $enseignant->prenom = $request->input('prenom');
     $enseignant->save();
-    return redirect('/');
+    return redirect('/')->with('status', 'Mis à jour enseignants avec succès.');
   }
 
   /**
@@ -95,6 +95,6 @@ class EnseignantController extends Controller
   {
     $enseignant = Enseignant::find($id);
     $enseignant->delete();
-    return redirect('/');
+    return redirect('/')->with('status', 'Un enseignant a été supprimé avec succès.');
   }
 }

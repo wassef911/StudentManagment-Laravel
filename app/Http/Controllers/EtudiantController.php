@@ -40,7 +40,7 @@ class EtudiantController extends Controller
     $etudiant->tel = $request->input('tel');
 
     $etudiant->save();
-    return redirect('/');
+    return redirect('/')->with('status',  'Un etudiant a été créée avec succès.');
   }
 
   /**
@@ -87,7 +87,7 @@ class EtudiantController extends Controller
     $etudiant->age = $request->input('age');
     $etudiant->diplome = $request->input('diplome');
     $etudiant->save();
-    return redirect('/');
+    return redirect('/')->with('status', 'Mis à jour etudiants avec succès.');
   }
 
   /**
@@ -100,6 +100,6 @@ class EtudiantController extends Controller
   {
     $etudiant = Etudiant::find($id);
     $etudiant->delete();
-    return redirect('/');
+    return redirect('/')->with('status', 'Un etudiant a été supprimé avec succès.');
   }
 }
