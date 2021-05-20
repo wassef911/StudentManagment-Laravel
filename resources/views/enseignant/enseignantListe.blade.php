@@ -25,11 +25,11 @@
                      <td>{{$enseignant->nom}}</td>
                      <td>{{$enseignant->prenom}}</td>
                      <td>
-                       <a type="button" class="btn btn-warning"  href="{{url('/edit/enseignant/'.$enseignant->id)}}">
-                        modifier
+                       <a type="button" class="btn btn-warning m-1"  href="{{url('/edit/enseignant/'.$enseignant->id)}}">
+                       <i class="bi bi-pencil-square"></i>
                        </a>
                        <a type="button" class="btn btn-danger"  href="{{url('/destroy/enseignant/'.$enseignant->id)}}">
-                         supprimer
+                       <i class="bi bi-eraser"></i>
                        </a>
                      </td>
                    </tr>
@@ -39,3 +39,4 @@
               @endif
           </div>
   </div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">

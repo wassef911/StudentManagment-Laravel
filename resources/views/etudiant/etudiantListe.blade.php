@@ -1,4 +1,4 @@
- <div class="card mb-3">
+ <div class="card mb-3 shadow">
           <div class="card-body">
             <h5 class="card-title">La liste des etudiants </h5>      
             <p class="card-text text-secondary">Vous pouvez trouver ici toutes les informations sur les étudiants dans le système</p>
@@ -9,7 +9,7 @@
               </h3>
             </div>
            @else
-              <table class="table table-dark table-striped">
+              <table class="table table-dark table-striped shadow">
                   <thead class="thead-light">
                   <tr>
                       <th scope="col">CIM</th>
@@ -29,11 +29,11 @@
                       <td>{{$etudiant->age}}</td>
                       <td>{{$etudiant->diplome}}</td>
                       <td>
-                        <a type="button" class="btn btn-warning"  href="{{url('/edit/etudiant/'.$etudiant->id)}}">
-                          modifier
+                        <a type="button" class="btn btn-warning m-1"  href="{{url('/edit/etudiant/'.$etudiant->id)}}">
+                        <i class="bi bi-pencil-square"></i>
                         </a>
                         <a type="button" class="btn btn-danger"  href="{{url('/destroy/etudiant/'.$etudiant->id)}}">
-                          supprimer
+                        <i class="bi bi-eraser"></i>
                         </a>
                       </td>
                     </tr>
@@ -43,3 +43,4 @@
               @endif
           </div>
   </div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">

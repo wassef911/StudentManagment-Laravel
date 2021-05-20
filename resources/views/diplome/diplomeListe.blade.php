@@ -23,11 +23,11 @@
                       <td>{{$diplome->nom}}</td>
                       <td>{{$diplome->description}}</td>
                       <td>
-                        <a type="button" class="btn btn-warning"  href="{{url('/edit/diplome/'.$diplome->id)}}">
-                          modifier
+                        <a type="button" class="btn btn-warning mb-1"  href="{{url('/edit/diplome/'.$diplome->id)}}">
+                        <i class="bi bi-pencil-square"></i>
                         </a>
                         <a type="button" class="btn btn-danger"  href="{{url('/destroy/diplome/'.$diplome->id)}}">
-                          supprimer
+                        <i class="bi bi-eraser"></i>
                         </a>
                       </td>
                     </tr>
@@ -37,3 +37,4 @@
               @endif
           </div>
   </div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
