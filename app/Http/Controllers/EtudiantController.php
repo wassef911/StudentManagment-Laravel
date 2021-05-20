@@ -8,17 +8,6 @@ use Illuminate\Http\Request;
 class EtudiantController extends Controller
 {
   /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function index()
-  {
-    $etudiants = Etudiant::all();
-    return view('etudiant.index', ['etudiants' => $etudiants, 'layout' => 'index']);
-  }
-
-  /**
    * Show the form for creating a new resource.
    *
    * @return \Illuminate\Http\Response
@@ -26,7 +15,8 @@ class EtudiantController extends Controller
   public function create()
   {
     $etudiants = Etudiant::all();
-    return view('etudiant.index', ['etudiants' => $etudiants, 'layout' => 'create']);
+    $layout='create';
+    return view('etudiant.index', compact('etudiants','layout'));
   }
 
   /**
@@ -63,7 +53,8 @@ class EtudiantController extends Controller
   {
     $etudiant = Etudiant::find($id);
     $etudiants = Etudiant::all();
-    return view('etudiant.index', ['etudiants' => $etudiants, 'etudiant' => $etudiant, 'layout' => 'show']);
+    $layout='show';
+    return view('etudiant.index', compact('etudiants','etudiant','layout'));  
   }
 
   /**
@@ -76,8 +67,9 @@ class EtudiantController extends Controller
   {
     $etudiant = Etudiant::find($id);
     $etudiants = Etudiant::all();
-    return view('etudiant.index', ['etudiants' => $etudiants, 'etudiant' => $etudiant, 'layout' => 'edit']);
-  }
+    $layout='edit';
+    return view('etudiant.index', compact('etudiants','etudiant','layout'));  
+    }
 
   /**
    * Update the specified resource in storage.

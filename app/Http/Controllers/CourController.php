@@ -9,17 +9,9 @@ use Illuminate\Http\Request;
 
 class CourController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $cours = Cour::all();
-        return view('cour.index', ['cours' => $cours, 'layout' => 'index']);
-    }
 
+    private $operation = '';
+    private $entity = 'cour';
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +22,9 @@ class CourController extends Controller
         $cours = Cour::all();
         $enseignants = Enseignant::all();
         $diplomes = Diplome::all();
-        return view('cour.index', ['cours' => $cours,'diplomes' => $diplomes,'enseignants' => $enseignants, 'layout' => 'create']);
+        $layout = 'create';
+        $this->operation = '';
+        return view('cour.index', compact('cours','diplomes','enseignants','layout'));
     }
 
     /**
@@ -47,6 +41,7 @@ class CourController extends Controller
         $cour->duree = $request->input('duree');
         $cour->enseignant = $request->input('enseignant');
         $cour->diplome = $request->input('diplome');
+        $this->operation = 'create';
 
         $cour->save();
         return redirect('/');
@@ -62,7 +57,9 @@ class CourController extends Controller
     {
         $cour = Cour::find($id);
         $cours = Cour::all();
-        return view('cour.index', ['cours' => $cours,'cour' => $cour,'diplomes' => $diplomes,'enseignants' => $enseignants, 'layout' => 'show']);
+        $layout = 'show';
+        $this->operation = '';
+        return view('cour.index',compact('cours','cour', 'layout'));
     }
 
     /**
@@ -77,7 +74,9 @@ class CourController extends Controller
         $cours = Cour::all();
         $enseignants = Enseignant::all();
         $diplomes = Diplome::all();
-        return view('cour.index', ['cour' => $cour,'cours' => $cours,'diplomes' => $diplomes,'enseignants' => $enseignants, 'layout' => 'edit']);
+        $layout = 'edit';
+        $this->operation = '';
+        return view('cour.index',compact('cours','cour','diplomes' ,'enseignants', 'layout'));
     }
 
     /**
@@ -96,6 +95,7 @@ class CourController extends Controller
         $cour->enseignant = $request->input('enseignant');
         $cour->diplome = $request->input('diplome');
         $cour->save();
+        $this->operation = 'update';
         return redirect('/');
     }
 
@@ -109,6 +109,7 @@ class CourController extends Controller
     {
         $cour = Cour::find($id);
         $cour->delete();
+        $this->operation = 'delete';
         return redirect('/');
     }
 }

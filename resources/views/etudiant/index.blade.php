@@ -11,8 +11,6 @@
     @include("navbar")
 <div class="d-flex justify-content-center align-items-center flex-wrap">
 
-
-
 @if($layout == 'create')
     <div class="container-fluid mt-4 " id="create-form">
         <div class="row">

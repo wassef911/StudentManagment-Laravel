@@ -10,16 +10,16 @@
             <a class="nav-link active" aria-current="page"  href="{{url('/')}}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/create/etudiant')}}">Créer Etudiant</a>
+            <a class="nav-link" href="{{url('/create/etudiant')}}">Etudiant</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/create/enseignant')}}">Créer Enseignant</a>
+            <a class="nav-link" href="{{url('/create/enseignant')}}">Enseignant</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/create/diplome')}}">Créer Diplome</a>
+            <a class="nav-link" href="{{url('/create/diplome')}}">Diplome</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/create/cour')}}">Créer Cour</a>
+            <a class="nav-link" href="{{url('/create/cour')}}">Cour</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('/getStats')}}">Statistique</a>

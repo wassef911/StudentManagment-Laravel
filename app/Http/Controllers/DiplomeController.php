@@ -7,16 +7,6 @@ use Illuminate\Http\Request;
 
 class DiplomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $diplomes = Diplome::all();
-        return view('diplome.index', ['diplomes' => $diplomes, 'layout' => 'index']);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -26,7 +16,8 @@ class DiplomeController extends Controller
     public function create()
     {
         $diplomes = Diplome::all();
-        return view('diplome.index', ['diplomes' => $diplomes, 'layout' => 'create']);
+        $layout='create';
+        return view('diplome.index',  compact('diplomes','layout'));
     }
 
     /**
@@ -54,7 +45,8 @@ class DiplomeController extends Controller
     {
         $diplome = Diplome::find($id);
         $diplomes = Diplome::all();
-        return view('diplome.index', ['diplomes' => $diplomes, 'diplome' => $diplome, 'layout' => 'show']);
+        $layout='show';
+        return view('diplome.index',  compact('diplomes','diplome','layout'));
     }
 
     /**
@@ -67,7 +59,8 @@ class DiplomeController extends Controller
     {
         $diplome = Diplome::find($id);
         $diplomes = Diplome::all();
-        return view('diplome.index', ['diplomes' => $diplomes, 'diplome' => $diplome, 'layout' => 'edit']);
+        $layout='edit';
+        return view('diplome.index',  compact('diplomes','diplome','layout'));
     }
 
     /**

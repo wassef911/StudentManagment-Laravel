@@ -7,16 +7,6 @@ use Illuminate\Http\Request;
 
 class EnseignantController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function index()
-  {
-    $enseignants = Enseignant::all();
-    return view('enseignant.index', ['enseignants' => $enseignants, 'layout' => 'index']);
-  }
 
   /**
    * Show the form for creating a new resource.
@@ -26,7 +16,8 @@ class EnseignantController extends Controller
   public function create()
   {
     $enseignants = Enseignant::all();
-    return view('enseignant.index', ['enseignants' => $enseignants, 'layout' => 'create']);
+    $layout='create';
+    return view('enseignant.index', compact('enseignants','layout'));
   }
 
   /**
@@ -59,8 +50,9 @@ class EnseignantController extends Controller
   {
     $enseignant = Enseignant::find($id);
     $enseignants = Enseignant::all();
-    return view('enseignant.index', ['enseignants' => $enseignants, 'enseignant' => $enseignant, 'layout' => 'show']);
-  }
+    $layout='show';
+    return view('enseignant.index', compact('enseignants','enseignant','layout')); 
+   }
 
   /**
    * Show the form for editing the specified resource.
@@ -72,8 +64,9 @@ class EnseignantController extends Controller
   {
     $enseignant = Enseignant::find($id);
     $enseignants = Enseignant::all();
-    return view('enseignant.index', ['enseignants' => $enseignants, 'enseignant' => $enseignant, 'layout' => 'edit']);
-  }
+    $layout='edit';
+    return view('enseignant.index', compact('enseignants','enseignant','layout')); 
+    }
 
   /**
    * Update the specified resource in storage.
