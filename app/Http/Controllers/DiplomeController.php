@@ -31,6 +31,10 @@ class DiplomeController extends Controller
         $diplome = new Diplome();
         $diplome->nom = $request->input('nom');
         $diplome->description = $request->input('description');
+        $request->validate([
+            'nom'=> 'min:3',
+            'description'=>'required',
+        ]);
         $diplome->save();
         return redirect('/')->with('status',  'Une diplome a été créée avec succès.');
     }
@@ -75,6 +79,10 @@ class DiplomeController extends Controller
         $diplome = Diplome::find($id);
         $diplome->nom = $request->input('nom');
         $diplome->description = $request->input('description');
+        $request->validate([
+            'nom'=> 'min:3',
+            'description'=>'required',
+        ]);
         $diplome->save();
         return redirect('/')->with('status', 'Mis à jour diplomes avec succès.');
     }

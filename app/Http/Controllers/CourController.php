@@ -20,7 +20,6 @@ class CourController extends Controller
         $enseignants = Enseignant::all();
         $diplomes = Diplome::all();
         $layout = 'create';
-        $this->operation = '';
         return view('cour.index', compact('cours','diplomes','enseignants','layout'));
     }
 
@@ -38,8 +37,13 @@ class CourController extends Controller
         $cour->duree = $request->input('duree');
         $cour->enseignant = $request->input('enseignant');
         $cour->diplome = $request->input('diplome');
-        $this->operation = 'create';
-
+        $request->validate([
+            'nom'=> 'min:3',
+            'description'=>'required',
+            'duree'=>'required',
+            'enseignant'=>'required',
+            'diplome'=>'required'
+        ]);
         $cour->save();
         return redirect('/')->with('status',  'Un cours a été créée avec succès.');
     }
@@ -55,7 +59,7 @@ class CourController extends Controller
         $cour = Cour::find($id);
         $cours = Cour::all();
         $layout = 'show';
-        $this->operation = '';
+
         return view('cour.index',compact('cours','cour', 'layout'));
     }
 
@@ -72,7 +76,6 @@ class CourController extends Controller
         $enseignants = Enseignant::all();
         $diplomes = Diplome::all();
         $layout = 'edit';
-        $this->operation = '';
         return view('cour.index',compact('cours','cour','diplomes' ,'enseignants', 'layout'));
     }
 
@@ -91,8 +94,14 @@ class CourController extends Controller
         $cour->duree = $request->input('duree');
         $cour->enseignant = $request->input('enseignant');
         $cour->diplome = $request->input('diplome');
+        $request->validate([
+            'nom'=> 'min:3',
+            'description'=>'required',
+            'duree'=>'required',
+            'enseignant'=>'required',
+            'diplome'=>'required'
+        ]);
         $cour->save();
-
     return redirect('/')->with('status',  'Mis à jour cours avec succès.');
     }
 

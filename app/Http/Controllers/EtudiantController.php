@@ -38,7 +38,18 @@ class EtudiantController extends Controller
     $etudiant->mdp = $request->input('mdp');
     $etudiant->login = $request->input('login');
     $etudiant->tel = $request->input('tel');
-
+    $request->validate([
+      'cin'=> 'min:3|required',
+      'nom'=>'required',
+      'prenom'=>'required',
+      'age'=>'required',
+      'tel'=>'required',
+      'diplome'=>'required',
+      'mail'=>'required',
+      'login'=>'required',
+      'numbur'=>'required',
+      'grade'=>'required'
+  ]);
     $etudiant->save();
     return redirect('/')->with('status',  'Un etudiant a été créée avec succès.');
   }
@@ -86,6 +97,13 @@ class EtudiantController extends Controller
     $etudiant->prenom = $request->input('prenom');
     $etudiant->age = $request->input('age');
     $etudiant->diplome = $request->input('diplome');
+    $request->validate([
+      'cin'=> 'min:3|required',
+      'nom'=>'required',
+      'prenom'=>'required',
+      'age'=>'required',
+      'diplome'=>'required',
+  ]);
     $etudiant->save();
     return redirect('/')->with('status', 'Mis à jour etudiants avec succès.');
   }

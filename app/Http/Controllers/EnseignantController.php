@@ -36,6 +36,15 @@ class EnseignantController extends Controller
     $enseignant->mail = $request->input('mail');
     $enseignant->numbur = $request->input('numbur');
     $enseignant->grade = $request->input('grade');
+    $request->validate([
+      'cin'=> 'min:3|required',
+      'nom'=>'required',
+      'prenom'=>'required',
+      'tel'=>'required',
+      'mail'=>'required',
+      'numbur'=>'required',
+      'grade'=>'required'
+  ]);
     $enseignant->save();
     return redirect('/')->with('status',  'Un enseignant a été créée avec succès.');
   }
@@ -81,6 +90,11 @@ class EnseignantController extends Controller
     $enseignant->cin = $request->input('cin');
     $enseignant->nom = $request->input('nom');
     $enseignant->prenom = $request->input('prenom');
+    $request->validate([
+      'cin'=> 'min:3|required',
+      'nom'=>'required',
+      'prenom'=>'required'
+  ]);
     $enseignant->save();
     return redirect('/')->with('status', 'Mis à jour enseignants avec succès.');
   }

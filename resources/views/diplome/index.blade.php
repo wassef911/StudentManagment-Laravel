@@ -24,6 +24,13 @@
                     <img src="/assets/image2.png" class="img-fluid" alt="image">
                     <div class="card-body">
                         <h5 class="card-title">enter les informations du nouveau diplome</h5>
+                        @if($errors->any())
+                        @foreach ($errors->all() as $err)
+                        <div class="alert alert-danger" role="alert">
+                        {{$err}}
+                        </div>
+                        @endforeach
+                        @endif
                         <form action="{{ url('/store/diplome') }}" method="post">
                             @csrf 
                             <div class="form-group">
@@ -63,6 +70,13 @@
                     <img src="/assets/image1.png" class="img-fluid" alt="image">
                     <div class="card-body">
                         <h5 class="card-title">Mise a jour diplomes</h5>
+                        @if($errors->any())
+                        @foreach ($errors->all() as $err)
+                        <div class="alert alert-danger" role="alert">
+                        {{$err}}
+                        </div>
+                        @endforeach
+                        @endif
                         <form action="{{ url('/update/diplome/'.$diplome->id) }}" method="post">
                             @csrf
                             <div class="form-group">
